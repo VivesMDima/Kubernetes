@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webshop-deployment
+  labels:
+    app: webshop
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webshop
+  template:
+    metadata:
+      labels:
+        app: webshop
+    spec:
+      containers:
+      - name: webshop
+        image: dimilan/webshop
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
